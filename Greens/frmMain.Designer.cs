@@ -31,16 +31,17 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtCustomer = new System.Windows.Forms.TextBox();
             this.btnBuyNow = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtApples = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtBananas = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.txtOranges = new System.Windows.Forms.TextBox();
+            this.lblApplePrice = new System.Windows.Forms.Label();
+            this.lblBananasPrice = new System.Windows.Forms.Label();
+            this.lblOrangesPrice = new System.Windows.Forms.Label();
             this.lblTotalPrice = new System.Windows.Forms.Label();
+            this.txtPurchases = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -68,12 +69,12 @@
             this.btnBuyNow.Text = "Buy now!";
             this.btnBuyNow.UseVisualStyleBackColor = true;
             // 
-            // textBox2
+            // txtApples
             // 
-            this.textBox2.Location = new System.Drawing.Point(103, 50);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(49, 22);
-            this.textBox2.TabIndex = 3;
+            this.txtApples.Location = new System.Drawing.Point(103, 50);
+            this.txtApples.Name = "txtApples";
+            this.txtApples.Size = new System.Drawing.Size(49, 22);
+            this.txtApples.TabIndex = 3;
             // 
             // label2
             // 
@@ -94,12 +95,12 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "Bananas";
             // 
-            // textBox3
+            // txtBananas
             // 
-            this.textBox3.Location = new System.Drawing.Point(103, 78);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(49, 22);
-            this.textBox3.TabIndex = 5;
+            this.txtBananas.Location = new System.Drawing.Point(103, 78);
+            this.txtBananas.Name = "txtBananas";
+            this.txtBananas.Size = new System.Drawing.Size(49, 22);
+            this.txtBananas.TabIndex = 5;
             // 
             // label4
             // 
@@ -110,40 +111,41 @@
             this.label4.TabIndex = 8;
             this.label4.Text = "Oranges";
             // 
-            // textBox4
+            // txtOranges
             // 
-            this.textBox4.Location = new System.Drawing.Point(103, 106);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(49, 22);
-            this.textBox4.TabIndex = 7;
+            this.txtOranges.Location = new System.Drawing.Point(103, 106);
+            this.txtOranges.Name = "txtOranges";
+            this.txtOranges.Size = new System.Drawing.Size(49, 22);
+            this.txtOranges.TabIndex = 7;
+            this.txtOranges.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             // 
-            // label5
+            // lblApplePrice
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(167, 53);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(25, 17);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "3,-";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
+            this.lblApplePrice.AutoSize = true;
+            this.lblApplePrice.Location = new System.Drawing.Point(167, 53);
+            this.lblApplePrice.Name = "lblApplePrice";
+            this.lblApplePrice.Size = new System.Drawing.Size(25, 17);
+            this.lblApplePrice.TabIndex = 9;
+            this.lblApplePrice.Text = "?,-";
+            this.lblApplePrice.Click += new System.EventHandler(this.label5_Click);
             // 
-            // label6
+            // lblBananasPrice
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(167, 81);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(25, 17);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "2,-";
+            this.lblBananasPrice.AutoSize = true;
+            this.lblBananasPrice.Location = new System.Drawing.Point(167, 81);
+            this.lblBananasPrice.Name = "lblBananasPrice";
+            this.lblBananasPrice.Size = new System.Drawing.Size(25, 17);
+            this.lblBananasPrice.TabIndex = 10;
+            this.lblBananasPrice.Text = "?,-";
             // 
-            // label7
+            // lblOrangesPrice
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(167, 109);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(25, 17);
-            this.label7.TabIndex = 11;
-            this.label7.Text = "4,-";
+            this.lblOrangesPrice.AutoSize = true;
+            this.lblOrangesPrice.Location = new System.Drawing.Point(167, 109);
+            this.lblOrangesPrice.Name = "lblOrangesPrice";
+            this.lblOrangesPrice.Size = new System.Drawing.Size(25, 17);
+            this.lblOrangesPrice.TabIndex = 11;
+            this.lblOrangesPrice.Text = "?,-";
             // 
             // lblTotalPrice
             // 
@@ -153,21 +155,31 @@
             this.lblTotalPrice.Size = new System.Drawing.Size(0, 17);
             this.lblTotalPrice.TabIndex = 12;
             // 
+            // txtPurchases
+            // 
+            this.txtPurchases.Location = new System.Drawing.Point(357, 9);
+            this.txtPurchases.Multiline = true;
+            this.txtPurchases.Name = "txtPurchases";
+            this.txtPurchases.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtPurchases.Size = new System.Drawing.Size(392, 188);
+            this.txtPurchases.TabIndex = 13;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(337, 221);
+            this.ClientSize = new System.Drawing.Size(768, 221);
+            this.Controls.Add(this.txtPurchases);
             this.Controls.Add(this.lblTotalPrice);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.lblOrangesPrice);
+            this.Controls.Add(this.lblBananasPrice);
+            this.Controls.Add(this.lblApplePrice);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.txtOranges);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.txtBananas);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtApples);
             this.Controls.Add(this.btnBuyNow);
             this.Controls.Add(this.txtCustomer);
             this.Controls.Add(this.label1);
@@ -184,16 +196,17 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtCustomer;
         private System.Windows.Forms.Button btnBuyNow;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtApples;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtBananas;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtOranges;
+        private System.Windows.Forms.Label lblApplePrice;
+        private System.Windows.Forms.Label lblBananasPrice;
+        private System.Windows.Forms.Label lblOrangesPrice;
         private System.Windows.Forms.Label lblTotalPrice;
+        private System.Windows.Forms.TextBox txtPurchases;
     }
 }
 
