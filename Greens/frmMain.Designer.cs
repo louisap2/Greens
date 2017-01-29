@@ -68,6 +68,7 @@
             this.btnBuyNow.TabIndex = 2;
             this.btnBuyNow.Text = "Buy now!";
             this.btnBuyNow.UseVisualStyleBackColor = true;
+            this.btnBuyNow.Click += new System.EventHandler(this.btnBuyNow_Click);
             // 
             // txtApples
             // 
@@ -84,7 +85,6 @@
             this.label2.Size = new System.Drawing.Size(51, 17);
             this.label2.TabIndex = 4;
             this.label2.Text = "Apples";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label3
             // 
@@ -117,7 +117,6 @@
             this.txtOranges.Name = "txtOranges";
             this.txtOranges.Size = new System.Drawing.Size(49, 22);
             this.txtOranges.TabIndex = 7;
-            this.txtOranges.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             // 
             // lblApplePrice
             // 
@@ -127,7 +126,6 @@
             this.lblApplePrice.Size = new System.Drawing.Size(25, 17);
             this.lblApplePrice.TabIndex = 9;
             this.lblApplePrice.Text = "?,-";
-            this.lblApplePrice.Click += new System.EventHandler(this.label5_Click);
             // 
             // lblBananasPrice
             // 

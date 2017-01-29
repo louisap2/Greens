@@ -17,12 +17,6 @@ namespace Greens
             InitializeComponent();
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-
-        }
-
         private void frmMain_Load(object sender, EventArgs e)
         {
             txtCustomer.Text = "Mads";
@@ -83,29 +77,97 @@ namespace Greens
                     }
                 }
 
-                var purchases_with_details = from p in db.Purchases
-                                            join pd in db.Purchases_details on p.Id equals pd.purchase_id
-                                            group new { p, pd } by pd.purchase_id into pdg
-                                            select new { id = pdg.Select(m => m.p.Id), customer = pdg.Select(n => n.p.customer), totalPrice = pdg.Sum(o => o.pd.total_price) };
+                RefreshPurchasesList();
+            }
+        }
+
+        private void RefreshPurchasesList()
+        {
+            using (var db = new EntityDataModel())
+            {
+                var purchases_with_details = from pd in db.Purchases_details
+                                             group pd by pd.purchase_id into pdg
+                                             //join *after* group
+                                             join p in db.Purchases on pdg.Key equals p.Id
+                                             select new
+                                             {
+                                                 Id = p.Id,
+                                                 Cust = p.customer,
+                                                 TotalPrice = pdg.Sum(y => y.total_price)
+                                             };
 
                 StringBuilder sb = new StringBuilder();
-                foreach(var purchase_with_details in purchases_with_details)
+                foreach (var purchase_with_details in purchases_with_details)
                 {
-                    sb.AppendLine("Purchase #" + purchase_with_details.id + " by " + purchase_with_details.customer + ", total price: " + purchase_with_details.totalPrice);
+                    sb.AppendLine("Purchase #" + purchase_with_details.Id + " by " + purchase_with_details.Cust.Trim() + ", total price: " + purchase_with_details.TotalPrice);
                 }
 
                 txtPurchases.Text = sb.ToString();
             }
         }
 
-        private void label5_Click(object sender, EventArgs e)
+        private void btnBuyNow_Click(object sender, EventArgs e)
         {
+            int apples = Convert.ToInt32(txtApples.Text);
+            int bananas = Convert.ToInt32(txtBananas.Text);
+            int oranges = Convert.ToInt32(txtOranges.Text);
 
-        }
+            if (apples > 0 && bananas > 0 && oranges > 0)
+            {
+                using (var db = new EntityDataModel())
+                {
+                    Purchase purchase = new Purchase();
+                    purchase.customer = txtCustomer.Text;
+                    purchase.timestamp = DateTime.Now;
 
-        private void textBox4_TextChanged(object sender, EventArgs e)
-        {
+                    db.Purchases.Add(purchase);
+                    db.SaveChanges();
+                    
+                    int grandTotal = 0;
 
+                    if(apples > 0)
+                    {
+                        Purchases_details pd = new Purchases_details();
+                        pd.greens_id = db.Greens.Single(x => x.name == "Apple").Id;
+                        pd.amount = apples;
+                        pd.total_price = db.Greens.Single(x => x.name == "Apple").price * apples;
+                        grandTotal += pd.total_price;
+                        pd.purchase_id = purchase.Id;
+
+                        db.Purchases_details.Add(pd);
+                    }
+
+                    if (bananas > 0)
+                    {
+                        Purchases_details pd = new Purchases_details();
+                        pd.greens_id = db.Greens.Single(x => x.name == "Banana").Id;
+                        pd.amount = bananas;
+                        pd.total_price = db.Greens.Single(x => x.name == "Banana").price * bananas;
+                        grandTotal += pd.total_price;
+                        pd.purchase_id = purchase.Id;
+
+                        db.Purchases_details.Add(pd);
+                    }
+
+                    if (oranges > 0)
+                    {
+                        Purchases_details pd = new Purchases_details();
+                        pd.greens_id = db.Greens.Single(x => x.name == "Orange").Id;
+                        pd.amount = oranges;
+                        pd.total_price = db.Greens.Single(x => x.name == "Orange").price * oranges;
+                        grandTotal += pd.total_price;
+                        pd.purchase_id = purchase.Id;
+
+                        db.Purchases_details.Add(pd);
+                    }
+
+                    db.SaveChanges();
+
+                    MessageBox.Show("Purchase done. Grand total: " + grandTotal + ",-");
+
+                    RefreshPurchasesList();
+                }
+            }
         }
     }
 }

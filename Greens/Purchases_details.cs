@@ -7,7 +7,7 @@ namespace Greens
 
     public partial class Purchases_details
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         public int purchase_id { get; set; }
