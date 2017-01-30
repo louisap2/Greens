@@ -12,12 +12,10 @@ namespace Greens
     using System;
     using System.Collections.Generic;
     
-    public partial class Purchases_details
+    public partial class Customer
     {
         public int Id { get; set; }
-        public int purchase_id { get; set; }
-        public int greens_id { get; set; }
-        public int amount { get; set; }
-        public int total_price { get; set; }
+        public string first_name { get; set; }
+        public string last_name { get; set; }
     }
 }

@@ -27,8 +27,7 @@ namespace Greens
                 .IsFixedLength();
 
             modelBuilder.Entity<Purchase>()
-                .Property(e => e.customer)
-                .IsFixedLength();
+                .Property(e => e.customer_id);
         }
     }
 }

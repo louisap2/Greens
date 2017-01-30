@@ -19,12 +19,12 @@ namespace Greens
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            txtCustomer.Text = "Mads";
+            txtCustomer.Text = "Karl Smart";
             txtApples.Text = "0";
             txtBananas.Text = "0";
             txtOranges.Text = "0";
 
-            using (var db = new EntityDataModel())
+            using (var db = new greens_dbEntities())
             {
                 var applePrice = db.Greens.Where(x => x.name.Trim() == "Apple").Single();
                 lblApplePrice.Text = applePrice.price.ToString();
@@ -83,23 +83,25 @@ namespace Greens
 
         private void RefreshPurchasesList()
         {
-            using (var db = new EntityDataModel())
+            using (var db = new greens_dbEntities())
             {
                 var purchases_with_details = from pd in db.Purchases_details
                                              group pd by pd.purchase_id into pdg
                                              //join *after* group
                                              join p in db.Purchases on pdg.Key equals p.Id
+                                             join c in db.Customers on p.customer_id equals c.Id
                                              select new
                                              {
                                                  Id = p.Id,
-                                                 Cust = p.customer,
+                                                 FirstName = c.first_name,
+                                                 LastName = c.last_name,
                                                  TotalPrice = pdg.Sum(y => y.total_price)
                                              };
 
                 StringBuilder sb = new StringBuilder();
                 foreach (var purchase_with_details in purchases_with_details)
                 {
-                    sb.AppendLine("Purchase #" + purchase_with_details.Id + " by " + purchase_with_details.Cust.Trim() + ", total price: " + purchase_with_details.TotalPrice);
+                    sb.AppendLine("Purchase #" + purchase_with_details.Id + " by " + purchase_with_details.FirstName + " " + purchase_with_details.LastName + ", total price: " + purchase_with_details.TotalPrice);
                 }
 
                 txtPurchases.Text = sb.ToString();
@@ -114,10 +116,29 @@ namespace Greens
 
             if (apples > 0 && bananas > 0 && oranges > 0)
             {
-                using (var db = new EntityDataModel())
+                using (var db = new greens_dbEntities())
                 {
+                    string firstName = txtCustomer.Text.Substring(0, txtCustomer.Text.IndexOf(" "));
+                    string lastName = txtCustomer.Text.Substring(txtCustomer.Text.IndexOf(" ") + 1);
+
+                    int customerId = -1;
+                    if (db.Customers.Count(x => x.first_name == firstName && x.last_name == lastName) == 0)
+                    {
+                        Customer customer = new Customer();
+                        customer.first_name = firstName;
+                        customer.last_name = lastName;
+                        db.Customers.Add(customer);
+                        db.SaveChanges();
+
+                        customerId = customer.Id;
+                    }
+                    else
+                    {
+                        customerId = db.Customers.Single(x => x.first_name == firstName && x.last_name == lastName).Id;
+                    }
+
                     Purchase purchase = new Purchase();
-                    purchase.customer = txtCustomer.Text;
+                    purchase.customer_id = customerId;
                     purchase.timestamp = DateTime.Now;
 
                     db.Purchases.Add(purchase);
