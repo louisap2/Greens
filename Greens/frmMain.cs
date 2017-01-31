@@ -23,7 +23,7 @@ namespace Greens
             txtApples.Text = "0";
             txtBananas.Text = "0";
             txtOranges.Text = "0";
-
+            
             using (var db = new greens_dbEntities())
             {
                 var applePrice = db.Greens.Where(x => x.name.Trim() == "Apple").Single();
@@ -31,10 +31,13 @@ namespace Greens
 
                 if(db.Greens.Where(x => x.name.Trim() == "Banana").Count() == 0)
                 {
-                    Green banana = new Green();
-                    banana.name = "Banana";
-                    banana.type = "Fruit";
-                    banana.price = 3;
+                    // Using initializers
+                    Green banana = new Green
+                    {
+                        name = "Banana",
+                        type = "Fruit",
+                        price = 3
+                    };
 
                     db.Greens.Add(banana);
                     db.SaveChanges();
@@ -113,6 +116,13 @@ namespace Greens
             int apples = Convert.ToInt32(txtApples.Text);
             int bananas = Convert.ToInt32(txtBananas.Text);
             int oranges = Convert.ToInt32(txtOranges.Text);
+
+            var greensValidationRules = new List<Func<int, bool>>()
+            {
+                g => g > 0
+            };
+                                    
+            bool applesIsValid = greensValidationRules.All(g => g(apples));
 
             if (apples > 0 && bananas > 0 && oranges > 0)
             {

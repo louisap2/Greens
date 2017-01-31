@@ -99,6 +99,7 @@
     <Compile Include="Green.cs">
       <DependentUpon>EntityDataModel2.tt</DependentUpon>
     </Compile>
+    <Compile Include="GreensLogic.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Purchase.cs">
