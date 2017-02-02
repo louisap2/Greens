@@ -4,8 +4,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Greens", "Greens\Greens.csproj", "{A6B06112-51D4-4E2D-B04D-1FDC56A182A1}"
+	ProjectSection(ProjectDependencies) = postProject
+		{39467263-79D4-4DF5-ACFF-E7CD00F2B07D} = {39467263-79D4-4DF5-ACFF-E7CD00F2B07D}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GreensTest", "GreensTest_MsTest\GreensTest.csproj", "{F99D2D49-F9EE-4DDA-BFB1-EF316A1CE424}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GreensService", "GreensService\GreensService.csproj", "{39467263-79D4-4DF5-ACFF-E7CD00F2B07D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +26,10 @@ Global
 		{F99D2D49-F9EE-4DDA-BFB1-EF316A1CE424}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F99D2D49-F9EE-4DDA-BFB1-EF316A1CE424}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F99D2D49-F9EE-4DDA-BFB1-EF316A1CE424}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39467263-79D4-4DF5-ACFF-E7CD00F2B07D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39467263-79D4-4DF5-ACFF-E7CD00F2B07D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39467263-79D4-4DF5-ACFF-E7CD00F2B07D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39467263-79D4-4DF5-ACFF-E7CD00F2B07D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

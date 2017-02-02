@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Greens.GreensService;
 
 namespace Greens
 {
@@ -198,6 +199,19 @@ namespace Greens
 
                     RefreshPurchasesList();
                 }
+            }
+        }
+
+        private void btnServiceIt_Click(object sender, EventArgs e)
+        {
+            using (var db = new greens_dbEntities())
+            {
+                int applesPrice = db.Greens.Single(x => x.name == "apple").price;
+
+                GreensServiceClient greensServiceClient = new GreensServiceClient("BasicHttpBinding_IGreensService");
+                GreensPrice greensPrice = greensServiceClient.ConvertDataToGreensPrice("Apples", applesPrice);
+
+                MessageBox.Show("Greens service say " + greensPrice.Name + " cost " + greensPrice.Price + ",-");
             }
         }
     }

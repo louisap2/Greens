@@ -61,6 +61,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -108,6 +109,11 @@
     <Compile Include="Purchases_details.cs">
       <DependentUpon>EntityDataModel2.tt</DependentUpon>
     </Compile>
+    <Compile Include="Service References\GreensService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -137,6 +143,19 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Service References\GreensService\Greens.GreensService.GreensPrice.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\GreensService\GreensService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\GreensService\service.wsdl" />
+    <None Include="Service References\GreensService\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\GreensService\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -166,9 +185,21 @@
       <DependentUpon>EntityDataModel2.edmx</DependentUpon>
       <LastGenOutput>EntityDataModel2.cs</LastGenOutput>
     </Content>
+    <None Include="Service References\GreensService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\GreensService\configuration.svcinfo" />
+    <None Include="Service References\GreensService\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\GreensService\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

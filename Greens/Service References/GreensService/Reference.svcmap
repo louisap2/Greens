@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="d79b518d-9c75-4bb1-af6f-507a0965cdd7" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8733/Design_Time_Addresses/GreensService/Service1/mex" Protocol="mex" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="109131a0-10ba-40bd-adcf-feef5c5c1509" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/GreensService/Service1/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="f303de02-b9f3-488c-a4b7-fefa58c076a2" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/GreensService/Service1/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="7f14802a-1ce3-480d-91c4-89452a471bee" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/GreensService/Service1/mex" />
+    <MetadataFile FileName="GreensService.xsd" MetadataType="Schema" ID="2c9326b1-5314-4025-871b-83720b6289a4" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/GreensService/Service1/mex" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

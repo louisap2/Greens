@@ -42,6 +42,7 @@
             this.lblOrangesPrice = new System.Windows.Forms.Label();
             this.lblTotalPrice = new System.Windows.Forms.Label();
             this.txtPurchases = new System.Windows.Forms.TextBox();
+            this.btnServiceIt = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -162,11 +163,22 @@
             this.txtPurchases.Size = new System.Drawing.Size(392, 188);
             this.txtPurchases.TabIndex = 13;
             // 
+            // btnServiceIt
+            // 
+            this.btnServiceIt.Location = new System.Drawing.Point(238, 49);
+            this.btnServiceIt.Name = "btnServiceIt";
+            this.btnServiceIt.Size = new System.Drawing.Size(75, 23);
+            this.btnServiceIt.TabIndex = 14;
+            this.btnServiceIt.Text = "Service it";
+            this.btnServiceIt.UseVisualStyleBackColor = true;
+            this.btnServiceIt.Click += new System.EventHandler(this.btnServiceIt_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(768, 221);
+            this.ClientSize = new System.Drawing.Size(768, 216);
+            this.Controls.Add(this.btnServiceIt);
             this.Controls.Add(this.txtPurchases);
             this.Controls.Add(this.lblTotalPrice);
             this.Controls.Add(this.lblOrangesPrice);
@@ -205,6 +217,7 @@
         private System.Windows.Forms.Label lblOrangesPrice;
         private System.Windows.Forms.Label lblTotalPrice;
         private System.Windows.Forms.TextBox txtPurchases;
+        private System.Windows.Forms.Button btnServiceIt;
     }
 }
 
